@@ -25,6 +25,9 @@ public class AlertVisualStyle: NSObject {
 
     /// The vertical spacing between elements
     public var verticalElementSpacing: CGFloat = 24
+    
+    /// The background color of the action.
+    public var actionBackgroundColor: UIColor?
 
     /// The size of an action. The specified width is treated as a minimum width. The actual width is
     /// automatically determined.
