@@ -49,6 +49,10 @@ final class ActionSheetView: AlertControllerView {
         let cancelButtonBackground = UIImage.imageWithColor(self.visualStyle.actionHighlightColor)
         self.cancelButton?.setBackgroundImage(cancelButtonBackground, forState: .Highlighted)
         self.cancelHeightConstraint.constant = self.visualStyle.actionViewSize.height
+        
+        if let cancelActionBgColor = self.visualStyle.actionSheetCancelActionBackgroundColor {
+            self.cancelButton?.backgroundColor = cancelActionBgColor
+        }
 
         let showContentView = self.contentView.subviews.count > 0
         self.contentView.hidden = !showContentView

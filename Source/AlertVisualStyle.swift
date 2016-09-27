@@ -68,6 +68,9 @@ public class AlertVisualStyle: NSObject {
 
     /// The font for an alert's other actions
     public var alertNormalFont = UIFont.systemFontOfSize(17)
+    
+    /// The background color of the cancel button. This is only valid and used with action sheets
+    public var actionSheetCancelActionBackgroundColor: UIColor?
 
     /// The font for an action sheet's preferred action
     public var actionSheetPreferredFont = UIFont.boldSystemFontOfSize(20)
