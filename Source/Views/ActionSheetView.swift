@@ -8,6 +8,10 @@ final class ActionSheetView: AlertControllerView {
     @IBOutlet private var collectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var cancelHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var titleWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet private weak var titleLabelFirstBaselineConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var messageLabelBaselineConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var actionsViewTopConstraint: NSLayoutConstraint!
 
     override var actions: [AlertAction] {
         didSet {
@@ -26,6 +30,16 @@ final class ActionSheetView: AlertControllerView {
         didSet {
             let widthOffset = self.visualStyle.contentPadding.left + self.visualStyle.contentPadding.right
             self.titleWidthConstraint.constant -= widthOffset
+        }
+    }
+    
+    override var actionSheetShouldShowTitleAndMessage: Bool {
+        didSet {
+            self.actionsCollectionView.actionSheetShouldShowTitleAndMessage = self.actionSheetShouldShowTitleAndMessage
+            
+            self.titleLabelFirstBaselineConstraint.active = self.actionSheetShouldShowTitleAndMessage
+            self.messageLabelBaselineConstraint.active = self.actionSheetShouldShowTitleAndMessage
+            self.actionsViewTopConstraint.active = self.actionSheetShouldShowTitleAndMessage
         }
     }
 
@@ -57,6 +71,9 @@ final class ActionSheetView: AlertControllerView {
         let showContentView = self.contentView.subviews.count > 0
         self.contentView.hidden = !showContentView
         self.contentViewConstraints.forEach { $0.active = showContentView }
+        
+        self.titleLabel.hidden = true
+        self.messageLabel.hidden = true
     }
 
     override func highlightActionForPanGesture(sender: UIPanGestureRecognizer) {

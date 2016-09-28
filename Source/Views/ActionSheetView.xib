@@ -20,12 +20,14 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-E8-Ngj">
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7t-ji-MaB" customClass="SDCAlertLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7t-ji-MaB" customClass="SDCAlertLabel">
+                            <frame key="frameInset" minY="10.5" width="323" height="16"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                             <color key="textColor" red="0.55517578125" green="0.55517578125" blue="0.55517578125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfZ-Nd-gE5" customClass="SDCAlertLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" misplaced="YES" text="Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfZ-Nd-gE5" customClass="SDCAlertLabel">
+                            <frame key="frameInset" minY="28.5" width="323" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.55517578125" green="0.55517578125" blue="0.55517578125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -65,6 +67,13 @@
                         <constraint firstAttribute="trailing" secondItem="olF-R0-P3x" secondAttribute="trailing" id="nTV-Fr-ik3"/>
                         <constraint firstItem="olF-R0-P3x" firstAttribute="leading" secondItem="ZiE-E8-Ngj" secondAttribute="leading" id="zkC-9f-pQS"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="jIA-Qb-2yN"/>
+                            <exclude reference="0Uu-Mb-gRc"/>
+                            <exclude reference="SRF-rC-gpP"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3g-KU-XeF">
                     <subviews>
@@ -109,6 +118,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="actionsCollectionView" destination="j3f-QM-C8G" id="CKO-S4-bZZ"/>
+                <outlet property="actionsViewTopConstraint" destination="0Uu-Mb-gRc" id="QTm-kM-YIq"/>
                 <outlet property="cancelActionView" destination="Q3g-KU-XeF" id="bkk-gq-fwC"/>
                 <outlet property="cancelButton" destination="2eU-tu-ceL" id="YOy-l9-KSd"/>
                 <outlet property="cancelHeightConstraint" destination="mQ8-Rl-K8R" id="WrP-FV-gOK"/>
@@ -116,8 +126,10 @@
                 <outlet property="collectionViewHeightConstraint" destination="BSo-6l-mGc" id="5Xd-gO-WMB"/>
                 <outlet property="contentView" destination="olF-R0-P3x" id="8H0-HO-E4y"/>
                 <outlet property="messageLabel" destination="vfZ-Nd-gE5" id="P6A-pk-tnY"/>
+                <outlet property="messageLabelBaselineConstraint" destination="SRF-rC-gpP" id="lZ1-ge-pI2"/>
                 <outlet property="primaryView" destination="ZiE-E8-Ngj" id="ADf-I4-R1v"/>
                 <outlet property="titleLabel" destination="P7t-ji-MaB" id="vEg-AY-t6r"/>
+                <outlet property="titleLabelFirstBaselineConstraint" destination="jIA-Qb-2yN" id="Vap-Xp-VkP"/>
                 <outlet property="titleWidthConstraint" destination="f4q-g8-eZy" id="AUz-Zi-yYx"/>
                 <outletCollection property="contentViewConstraints" destination="KRp-CK-3TT" collectionClass="NSMutableArray" id="P1o-q9-kI1"/>
                 <outletCollection property="contentViewConstraints" destination="zkC-9f-pQS" collectionClass="NSMutableArray" id="nFp-rM-WRv"/>

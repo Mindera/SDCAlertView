@@ -95,6 +95,9 @@ class AlertView: AlertControllerView {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = self.visualStyle.cornerRadius
         self.textFieldsViewController?.visualStyle = self.visualStyle
+        
+        self.titleLabel.backgroundColor = .redColor()
+        self.messageLabel.backgroundColor = .redColor()
     }
 
     override func intrinsicContentSize() -> CGSize {

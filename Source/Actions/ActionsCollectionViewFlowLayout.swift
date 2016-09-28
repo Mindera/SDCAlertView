@@ -6,6 +6,8 @@ let kVerticalActionSeparator = "vertical"
 final class ActionsCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     var visualStyle: AlertVisualStyle?
+    
+    var actionSheetShouldShowTitleAndMessage = false
 
     override class func layoutAttributesClass() -> AnyClass {
         return ActionsCollectionViewLayoutAttributes.self
@@ -47,6 +49,10 @@ final class ActionsCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func layoutAttributesForDecorationViewOfKind(elementKind: String,
         atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes?
     {
+        if indexPath.item == 0 && !self.actionSheetShouldShowTitleAndMessage {
+            return nil
+        }
+        
         let attributes = ActionsCollectionViewLayoutAttributes(forDecorationViewOfKind: elementKind,
             withIndexPath: indexPath)
         guard let itemAttributes = self.layoutAttributesForItemAtIndexPath(indexPath) else { return nil }
