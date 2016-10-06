@@ -8,6 +8,10 @@ final class ActionSheetView: AlertControllerView {
     @IBOutlet private var collectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var cancelHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var titleWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet private weak var titleLabelFirstBaselineConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var messageLabelBaselineConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var actionsViewTopConstraint: NSLayoutConstraint!
 
     override var actionTappedHandler: ((AlertAction) -> Void)? {
         didSet { self.actionsCollectionView.actionTapped = self.actionTappedHandler }
@@ -17,6 +21,16 @@ final class ActionSheetView: AlertControllerView {
         didSet {
             let widthOffset = self.visualStyle.contentPadding.left + self.visualStyle.contentPadding.right
             self.titleWidthConstraint.constant -= widthOffset
+        }
+    }
+    
+    override var actionSheetShouldShowTitleAndMessage: Bool {
+        didSet {
+            self.actionsCollectionView.actionSheetShouldShowTitleAndMessage = self.actionSheetShouldShowTitleAndMessage
+            
+            self.titleLabelFirstBaselineConstraint.isActive = self.actionSheetShouldShowTitleAndMessage
+            self.messageLabelBaselineConstraint.isActive = self.actionSheetShouldShowTitleAndMessage
+            self.actionsViewTopConstraint.isActive = self.actionSheetShouldShowTitleAndMessage
         }
     }
 
@@ -40,6 +54,10 @@ final class ActionSheetView: AlertControllerView {
         let cancelButtonBackground = UIImage.image(with: self.visualStyle.actionHighlightColor)
         self.cancelButton?.setBackgroundImage(cancelButtonBackground, for: .highlighted)
         self.cancelHeightConstraint.constant = self.visualStyle.actionViewSize.height
+        
+        if let cancelActionBgColor = self.visualStyle.actionSheetCancelActionBackgroundColor {
+            self.cancelButton?.backgroundColor = cancelActionBgColor
+        }
 
         let showContentView = self.contentView.subviews.count > 0
         self.contentView.isHidden = !showContentView

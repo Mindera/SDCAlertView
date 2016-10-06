@@ -17,6 +17,10 @@ final class ActionCell: UICollectionViewCell {
 
     func set(_ action: AlertAction, with visualStyle: AlertVisualStyle) {
         action.actionView = self
+        
+        if let actionBackgroundColor = visualStyle.actionBackgroundColor {
+            self.contentView.backgroundColor = actionBackgroundColor
+        }
 
         self.titleLabel.font = visualStyle.font(for: action)
         

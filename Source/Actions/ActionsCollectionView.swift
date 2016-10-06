@@ -31,6 +31,14 @@ class ActionsCollectionView: UICollectionView {
     }
 
     var actionTapped: ((AlertAction) -> Void)?
+    
+    var actionSheetShouldShowTitleAndMessage = false {
+        didSet {
+            if let layout = self.collectionViewLayout as? ActionsCollectionViewFlowLayout {
+                layout.actionSheetShouldShowTitleAndMessage = self.actionSheetShouldShowTitleAndMessage
+            }
+        }
+    }
 
     private var highlightedCell: UICollectionViewCell?
 

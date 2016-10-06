@@ -16,6 +16,8 @@ protocol AlertControllerViewRepresentable {
     var titleLabel: AlertLabel! { get }
     var messageLabel: AlertLabel! { get }
     var actionsCollectionView: ActionsCollectionView! { get }
+    
+    var actionSheetShouldShowTitleAndMessage: Bool { get set }
 
     func add(_ behaviors: AlertBehaviors)
     func prepareLayout()
@@ -25,12 +27,18 @@ extension AlertControllerViewRepresentable where Self: UIView {
 
     var title: NSAttributedString? {
         get { return self.titleLabel.attributedText }
-        set { self.titleLabel.attributedText = newValue }
+        set {
+            self.titleLabel.attributedText = newValue
+            self.actionSheetShouldShowTitleAndMessage = newValue != nil
+        }
     }
 
     var message: NSAttributedString? {
         get { return self.messageLabel.attributedText }
-        set { self.messageLabel.attributedText = newValue }
+        set {
+            self.messageLabel.attributedText = newValue
+            self.actionSheetShouldShowTitleAndMessage = newValue != nil
+        }
     }
 
     var topView: UIView { return self }
@@ -84,6 +92,11 @@ class AlertControllerView: UIView, AlertControllerViewRepresentable {
     var actions: [AlertAction] = []
     var visualStyle: AlertVisualStyle!
     var actionTappedHandler: ((AlertAction) -> Void)?
+    var actionSheetShouldShowTitleAndMessage: Bool = false {
+        didSet {
+            self.actionsCollectionView.actionSheetShouldShowTitleAndMessage = self.actionSheetShouldShowTitleAndMessage
+        }
+    }
 
     func prepareLayout() {
         self.actionsCollectionView.actions = self.actions
