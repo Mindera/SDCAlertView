@@ -25,6 +25,9 @@ open class AlertVisualStyle: NSObject {
 
     /// The vertical spacing between elements
     public var verticalElementSpacing: CGFloat = 24
+    
+    /// The background color of the action.
+    public var actionBackgroundColor: UIColor?
 
     /// The size of an action. The specified width is treated as a minimum width. The actual width is
     /// automatically determined.
@@ -65,6 +68,9 @@ open class AlertVisualStyle: NSObject {
 
     /// The font for an alert's other actions
     public var alertNormalFont = UIFont.systemFont(ofSize: 17)
+    
+    /// The background color of the cancel button. This is only valid and used with action sheets
+    public var actionSheetCancelActionBackgroundColor: UIColor?
 
     /// The font for an action sheet's preferred action
     public var actionSheetPreferredFont = UIFont.boldSystemFont(ofSize: 20)
